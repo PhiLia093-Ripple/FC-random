@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>十三英傑からの言葉</title>
+    <style>
+        /* スマホ向けに画面全体を使って中央に表示するスタイル */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); /* 古の楽園をイメージした夜空のような背景 */
+            color: #fff;
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .container {
+            padding: 2rem;
+            max-width: 90%;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .rank {
+            font-size: 1.2rem;
+            color: #d4af37; /* ゴールド系の色 */
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .name {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            letter-spacing: 3px;
+        }
+
+        .quote {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+            font-style: italic;
+        }
+
+        .reload-btn {
+            background-color: transparent;
+            color: #fff;
+            border: 2px solid #d4af37;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .reload-btn:hover, .reload-btn:active {
+            background-color: #d4af37;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="rank" id="rank"></div>
+        <div class="name" id="name"></div>
+        <div class="quote" id="quote"></div>
+        <button class="reload-btn" onclick="drawFlameChaser()">もう一度記憶を辿る</button>
+    </div>
+
+    <script>
+        // 十三英傑のデータ
+        const flameChasers = [
+            { rank: "第一位", name: "ケビン", quote: "「それでも僕たちは、ヒーローにならなければならない」" },
+            { rank: "第二位", name: "エリシア", quote: "「これほど美しい花は、咲く前に枯れるべきじゃない」" },
+            { rank: "第三位", name: "アポニア", quote: "「私が哀愁の城へ入り……私が永劫の苦に堕ちる」" },
+            { rank: "第四位", name: "エデン", quote: "「時が残り続け、星々が永遠に輝きますように」" },
+            { rank: "第五位", name: "ヴィルヴィ", quote: "「聞いて！噛み合う歯車の喝采を！」" },
+            { rank: "第六位", name: "千劫", quote: "「彼らの死には「意味」がなきゃいけない」" },
+            { rank: "第七位", name: "スウ", quote: "「心ひとつで存在し、意識ひとつで変わる」" },
+            { rank: "第八位", name: "サクラ", quote: "「刹那、森羅断絶」" },
+            { rank: "第九位", name: "コズマ", quote: "「長い黒夜でも、旭光は常に明るい」" },
+            { rank: "第十位", name: "メビウス", quote: "「わたしたちは「人類」とは何かを再定義する」" },
+            { rank: "第十一位", name: "グレーシュ", quote: "「見て、私たちの色、ここに残ってるよ」" },
+            { rank: "第十二位", name: "華", quote: "「人生というものは、失敗を経て成功するものです」" },
+            { rank: "第十三位", name: "パルドフェリス", quote: "「人生は結局「空夢」みたいなものだ」" }
+        ];
+
+        // ランダムに英傑を選んで表示する関数
+        function drawFlameChaser() {
+            // 0から12までのランダムな整数を生成 (13分の1の確率)
+            const randomIndex = Math.floor(Math.random() * flameChasers.length);
+            const selectedChaser = flameChasers[randomIndex];
+
+            // HTMLの要素を書き換える
+            document.getElementById("rank").textContent = selectedChaser.rank;
+            document.getElementById("name").textContent = selectedChaser.name;
+            document.getElementById("quote").textContent = selectedChaser.quote;
+        }
+
+        // ページが読み込まれた時に最初の1人を表示する
+        window.onload = drawFlameChaser;
+    </script>
+
+</body>
+</html>
